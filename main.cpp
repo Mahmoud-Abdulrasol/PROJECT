@@ -1,70 +1,73 @@
 #include <iostream>
 #include<string>
 using namespace std;
- class client{
- protected:
-     int id;
-     string name,password;
-     double balance;
- public:
-     void setId(int id)
-     {
-         this->id=id;
-     }
-     int getID()
-     {
-         return id;
-     }
-     client(string name,string password,double balance)
-     {
-         setName(name);
-         setPassword(password);
-         setBalance(balance);
-     }
-       static void setName(string name)
-    {
-
-         while(true){
-                if(name.size()>=5 && name.size()<=20)
-    {
-        this->name=name;
-        break;
-                        }
-     else{cout<<"name must min=5 and max=20"<<endl;
-           cout<<"enter anthor name:";
-             cin>>name;                               }
-
-    }
-
-    }
-
-     static void setPassword(string password)
-    { while(true){
-                 if(password.size()>=8 && password.size()<=20)
+//VALIDATION
+class validation{
+    public:
+static bool validName(string name)
+{
+        if(name.size()>=5 && name.size()<=20)
         {
-        this->password=password;
-        break;
+            return true;
+        }
+        else{
+                cout<<"name must be min=5 max=20";
+                             return false;
                                 }
-      else{cout<<"passowrd must be min=8 max=20";
-            cout<<"enter anther pass";
-             cin>>password;                          }
-                         }
 
-    }
-     void setBalance(double balance)
-    { while(true){
-        if(balance>=1500)
+}
+static bool validPassowrd(string pass)
+{
+     if(password.size()>=8 && password.size()<=20)
+     {
+         return true;
+     }
+     else{
+            cout<<"password must more than 8";
+            return false;
+
+                    }
+}
+static bool validBalance(double balance)
+{
+  if (balance >= 1500) {
+			return true;
+		}
+		return false;
+	}
+};
+//__________________________________________________________________________
+class person{
+   private:
+       int id;
+       string name,password;
+   public:
+       //SETTER
+    void setName(string name)
     {
-         this->balance=balance;
-         break;
-                               }
-       else{cout<<"min balance must be 1500 or higher";
-            cout<<"enter again balance:";
-            cin>>balance;
-
-                                   }
-                         }
+        if(validation::validName(name))
+        {
+            this->name=name;
+        }
+        else{
+            cout<<"incorrect name";
+                     }
     }
+    void setPassword(string password)
+    {
+        if(validation::validPassowrd(password))
+        {
+            this->password=password;
+        }
+        else{
+              cout<<"incorrect pass";
+                      }
+    }
+    void setID(int id)
+    {
+        this->id=id;
+    }
+    //GETTER
     string getName()
     {
         return name;
@@ -73,11 +76,30 @@ using namespace std;
     {
         return password;
     }
-    double getBalance()
+    int getID()
     {
-        return balance;
+        return id;
     }
-
+};
+//_______________________________________________________________________________________
+ class client:public person{
+ private:
+     double balance
+ public:
+     //SETTER&GETTER
+     void setBalance(double balance)
+     {
+         this->balance=balance
+     }
+     double getBalance()
+     {
+         return balance;
+     }
+     //constractor inherit
+     client(int id,string name,string password,double balance):person(id,name,password)
+     {
+         setBalance(balance);
+     }
 
  };
 int main()
