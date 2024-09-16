@@ -21,7 +21,7 @@ using namespace std;
          setPassword(password);
          setBalance(balance);
      }
-      void setName(string name)
+       static void setName(string name)
     {
 
          while(true){
@@ -38,7 +38,7 @@ using namespace std;
 
     }
 
-      void setPassword(string password)
+     static void setPassword(string password)
     { while(true){
                  if(password.size()>=8 && password.size()<=20)
         {
@@ -82,13 +82,5 @@ using namespace std;
  };
 int main()
 {
-string n,p;
-double b;
-cin>>n>>p>>b;
-client obj(n,p,b);
-obj.setName(n);
-obj.setPassword(p);
-obj.setBalance(b);
-cout<<obj.getName()<<endl<<obj.getPassword()<<endl<<obj.getBalance();
-    return 0;
+
 }
