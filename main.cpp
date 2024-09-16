@@ -16,7 +16,7 @@ static bool validName(string name)
                                 }
 
 }
-static bool validPassowrd(string pass)
+static bool validPassowrd(string password)
 {
      if(password.size()>=8 && password.size()<=20)
      {
@@ -80,27 +80,32 @@ class person{
     {
         return id;
     }
+    person(int id,string name,string password)
+    {
+        this->id=id;
+        this->name=name;
+        this->password=password;
+    }
+
 };
 //_______________________________________________________________________________________
  class client:public person{
  private:
-     double balance
+     double balance;
  public:
      //SETTER&GETTER
      void setBalance(double balance)
      {
-         this->balance=balance
+         this->balance=balance;
      }
      double getBalance()
      {
          return balance;
      }
      //constractor inherit
-     client(int id,string name,string password,double balance):person(id,name,password)
-     {
-         setBalance(balance);
-     }
-
+    client(int id,string name,string password,double balance):person(id,name,password) {
+	        	setBalance(balance);
+	}
  };
 int main()
 {
