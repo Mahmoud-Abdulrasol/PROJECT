@@ -106,6 +106,11 @@ class person{
     client(int id,string name,string password,double balance):person(id,name,password) {
 	        	setBalance(balance);
 	}
+	void deposit(double amount)
+	{
+	    if(amount>0)
+            this->balance+=amount;
+	}
  };
 int main()
 {
