@@ -7,16 +7,25 @@ using namespace std;
      string name,password;
      double balance;
  public:
+     void setId(int id)
+     {
+         this->id=id;
+     }
+     int getID()
+     {
+         return id;
+     }
      client(string name,string password,double balance)
      {
          setName(name);
          setPassword(password);
          setBalance(balance);
      }
-    void setName(string name)
+      void setName(string name)
     {
+
          while(true){
-                if(name.length()>=5 && name.length()<=20)
+                if(name.size()>=5 && name.size()<=20)
     {
         this->name=name;
         break;
@@ -26,11 +35,12 @@ using namespace std;
              cin>>name;                               }
 
     }
+
     }
 
-    void setPassword(string password)
+      void setPassword(string password)
     { while(true){
-                 if(password.length()>=8 && password.length()<=20)
+                 if(password.size()>=8 && password.size()<=20)
         {
         this->password=password;
         break;
@@ -39,8 +49,9 @@ using namespace std;
             cout<<"enter anther pass";
              cin>>password;                          }
                          }
+
     }
-    void setBalance(double balance)
+     void setBalance(double balance)
     { while(true){
         if(balance>=1500)
     {
