@@ -139,10 +139,37 @@ class person{
 	}
 
  };
-
 //=====================================================================================
+class employee:public person{
+private:
+	double salary;
+public:
+	employee(int id, string name, string password, double salary) : person(id, name, password) {
+		setSalary(salary);
+	}
 
+	void setSalary(double salary) {
+		if (Validation::ValidateSalary(salary))
+			this->salary = salary;
+		else cout << "Invalid salary\n";
+	}
 
+	double getSalary() {
+		return salary;
+	}
+
+	void display() {
+		cout << "Salary : " << salary << endl;
+	}
+};
+//=========================================================================
+class Admin :public employee{
+public:
+	Admin(int id, string name, string password, double salary) : employee(id, name, password, salary) {
+
+	}
+
+};
 
 int main()
 {
