@@ -3,9 +3,9 @@
 using namespace std;
 
 //VALIDATION
-class validation{
+class Validation{
 public:
-    static bool validName(string name){
+    static bool ValidName(string name){
         if (!(name.size() >= 5 && name.size() <= 20)) {
 			cout << "the size of name must be >=5 and <=20"<<endl;
 			return false;
@@ -19,7 +19,7 @@ public:
 		return true;
 	}
 
-    static bool validatepassword(string password) {
+    static bool Validatepassword(string password) {
 		if (password.size() >= 8 && password.size() <= 20) {
 			return true;
 		}
@@ -30,13 +30,13 @@ public:
 		}
 	}
 
-	static bool validateBalance(double balance) {
+	static bool ValidateBalance(double balance) {
 		if (balance < 1500) {
 			return false;
 		}
 		return true;
 	}
-	static bool validateSalary(double salary) {
+	static bool ValidateSalary(double salary) {
 		if (salary < 5000) {
 			return false;
 		}
@@ -52,7 +52,7 @@ class person{
    public:
        //SETTER
     void setName(string name){
-        if(validation::validName(name)){
+        if(Validation::ValidName(name)){
             this->name=name;
         }
         else{
@@ -60,9 +60,8 @@ class person{
                      }
     }
     void setPassword(string password){
-        if(validation::validPassowrd(password)){
-            this->password=password;
-        }
+        if (Validation::Validatepassword(password))
+			this->password = password;
         else{
               cout<<"incorrect pass";
                       }
@@ -100,8 +99,8 @@ class person{
      double balance;
  public:
      //SETTER&GETTER
-     void setBalance(double balance) {
-		if (Validation::validateBalance(balance))
+    void setBalance(double balance){
+		if (Validation::ValidateBalance(balance))
 			this->balance = balance;
 		else cout << "Invalid balance"<<endl;
 	}
@@ -110,11 +109,9 @@ class person{
      }
 
 
+
     //constractor inherit
 
-    Client() : Person() {
-		balance = 0;
-	}
     client(int id,string name,string password,double balance):person(id,name,password) {
 	        	setBalance(balance);
 	}
@@ -130,7 +127,7 @@ class person{
 		if (amount <= balance && amount > 0)
 			this->balance -= amount;
 	}
-	void transferTo(double amount, Client& recipient) {
+	void transferTo(double amount, client& recipient) {
 		withdraw(amount);
 		recipient.deposit(amount);
 	}
@@ -138,8 +135,7 @@ class person{
 		cout<<"Balance : "<<balance<<endl;
 	}
 	void display() {
-		Person::display();
-		cout <<"Balance : "<<balance<<endl;
+		cout << "Balance : " << balance << endl;
 	}
 
  };
